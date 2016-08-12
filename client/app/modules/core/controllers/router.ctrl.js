@@ -6,7 +6,7 @@
 
       AppAuth.login({})
         .then(function (user) {
-          if (user !== null && user !== undefined) {
+          if (user !== null && user !== undefined && user.role && user.role == "admin") {
             $state.go('app.home');
           } else {
             $state.go('login');

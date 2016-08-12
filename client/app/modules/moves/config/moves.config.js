@@ -6,7 +6,7 @@
     .module('com.module.moves')
     .run(function($rootScope) {
 
-      // $rootScope.addMenu('Les attaques','app.moves.list','fa-list-ul');
+      $rootScope.addMenu('Les attaques','app.moves.list','fa-list-ul');
 
     });
 

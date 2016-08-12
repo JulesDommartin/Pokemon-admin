@@ -27,7 +27,7 @@
     "angular-mocks": "^1.4.0"
   },
   "appPath": "client/app",
-  "moduleName": "PokemonApp",
+  "moduleName": "PokemonAdminApp",
   "overrides": {
     "bootstrap": {
       "main": [

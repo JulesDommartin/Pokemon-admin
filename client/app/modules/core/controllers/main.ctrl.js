@@ -10,7 +10,12 @@
 
       AppAuth.getUser()
         .then((user) => {
-          $scope.currentUser = user;
+          if (user.role != 'admin') {
+            console.log('Not an admin');
+            $state.go('login');
+          } else {
+            $scope.currentUser = user;
+          }
         })
         .catch(() => {
           var route1;
@@ -25,7 +30,7 @@
 
       $scope.logout = function () {
       	AppAuth.logout(() => {
-      		$window.location.href = "http://" + ENV.mainUrl;
+      		$window.location.href = "http://" + ENV.adminUrl;
       	});
       };
 

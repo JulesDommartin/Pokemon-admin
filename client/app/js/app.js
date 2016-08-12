@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('pokemonApp', [
+    .module('pokemonAdminApp', [
       'ngResource',
       'ngMaterial',
       'ngCookies',
@@ -14,7 +14,6 @@
       'config',
       'com.module.entities',
       'com.module.core',
-      'com.module.capture',
       'com.module.moves',
       'com.module.pokemons',
       'com.module.users'

@@ -29,6 +29,10 @@
           "insert": {
             url: urlBase + "/pokemons",
             method: "POST"
+          },
+          "update": {
+            url: urlBase + "/pokemons/:id",
+            method: "PUT"
           }
         }
       );

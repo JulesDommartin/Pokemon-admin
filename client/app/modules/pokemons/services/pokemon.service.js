@@ -25,6 +25,10 @@
         return this.pokemons;
       };
 
+      this.getPokemonById = function (id) {
+        return Pokemon.findById({id:id});
+      };
+
       this.getMoves = function () {
         return this.moves;
       };
@@ -49,6 +53,10 @@
 
       this.insert = function (pokemon) {
         return Pokemon.insert(pokemon).$promise;
+      };
+
+      this.update = function (pokemon) {
+        return Pokemon.update({id: pokemon._id}, pokemon).$promise;
       };
 
       this.findFromAPI = function (number) {

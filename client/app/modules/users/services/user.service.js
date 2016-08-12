@@ -19,6 +19,14 @@
 				return $q((resolve, reject) => {
 					AppAuth.login(userInstance)
 						.then((res) => {
+							console.log(res);
+							if (res.role != "admin") {
+								reject({
+									data: { 
+										message:"You are not an admin"
+									}
+								});
+							}
 							resolve(res);
 						})
 						.catch((err) => {

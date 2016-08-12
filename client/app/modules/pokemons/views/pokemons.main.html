@@ -1,9 +1,9 @@
 <div id="getHtml" style='display:none;'>
 </div>
 <div class="liste">
-  Les Pokémons de ton équipe se trouvent ici. Tu as {{ctrl.me.equipePokemons.length}} Pokémons.
+  La liste de tous les pokemons se trouve ici. Il y a {{ctrl.pokemons.length}} Pokémons.
   <div class="pokemons row">
-    <div class="col-md-6" ng-repeat="pokemon in ctrl.me.equipePokemons">
+    <div class="col-md-6" ng-repeat="pokemon in ctrl.pokemons">
       <div class="pokemon col-md-11">
         <div class="row">
           <div class="left-div col-md-4">
@@ -14,74 +14,46 @@
               <span>Nom : {{ctrl.pokemons[pokemon.id - 1].name}}</span>
             </p>
             <div class="pokemon-infos row">
-              <span class="col-md-12">Weight : {{ctrl.pokemons[pokemon.id - 1].weight}}</span>
-              <span class="col-md-12">Height : {{ctrl.pokemons[pokemon.id - 1].height}}</span>
+              <span class="col-md-12">Weight : {{pokemon.weight}}</span>
+              <span class="col-md-12">Height : {{pokemon.height}}</span>
             </div>
           </div>
-          <div class="right-div col-md-8">
+          <div class="right-div col-md-5">
             <div class="pokemon-stats row">
               <div class="row">
                 <div class="col-md-12">
-                  <span class="stat-label col-md-2">HP :</span>
-                  <div class="stat-bar col-md-6">
-                    <div class="stat-hp-bar stat-bar-inside" style="width:{{pokemon.hp_left / pokemon.stats[5].value * 100}}%; background-color:rgb( {{ ctrl.getColor(pokemon).r }}, {{ ctrl.getColor(pokemon).g }}, {{ ctrl.getColor(pokemon).b }});">
-                    </div>
-                  </div>
-                  <span class="col-md-3 stat-label">{{ pokemon.hp_left }} / {{ pokemon.stats[5].value }}</span>
+                  <span class="stat-label">Attaque : {{  pokemon.stats[4].base_stat }}</span>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-md-5">
-                  <span class="stat-label">Attaque : {{  pokemon.stats[4].value }}</span>
-                </div>
-                <div class="col-md-5">
-                  <span class="stat-label">Défense : {{ pokemon.stats[3].value }}</span>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-5">
-                  <span class="stat-label">Attaque spé. : {{ pokemon.stats[2].value }}</span>
-                </div>
-                <div class="col-md-5">
-                  <span class="stat-label">Défense spé. : {{ pokemon.stats[1].value }}</span>
+                <div class="col-md-12">
+                  <span class="stat-label">Défense : {{ pokemon.stats[3].base_stat }}</span>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <span class="stat-label">Vitesse : {{ pokemon.stats[0].value }}</span>
+                  <span class="stat-label">Attaque spé. : {{ pokemon.stats[2].base_stat }}</span>
+                </div>
+                <div class="col-md-12">
+                  <span class="stat-label">Défense spé. : {{ pokemon.stats[1].base_stat }}</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <span class="stat-label">Vitesse : {{ pokemon.stats[0].base_stat }}</span>
+                </div>
+                <div class="col-md-12">
+                  <span class="stat-label">HP : {{ pokemon.stats[5].base_stat }}</span>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-3">
             <img ng-if="ctrl.pokemons[pokemon.id - 1].sprites.front" ng-src="{{ ctrl.pokemons[pokemon.id - 1].sprites.front }}" alt="{{ctrl.pokemons[pokemon.id - 1].name}} [Failed]" />
-          </div>
-          <div class="col-md-8">
-            <div class="pokemon-moves row">
-              <div class="col-md-12">
-                <table>
-                  <tr>
-                    <th></th>
-                    <th>PP</th>
-                    <th>Pouvoir</th>
-                    <th>Précision</th>
-                  </tr>
-                  <tr ng-repeat="move in pokemon.moves">
-                    <td class="move-stat">{{ ctrl.moves[move].names.fr }}</td>
-                    <td class="move-stat">{{ ctrl.moves[move].pp }}</td>
-                    <td class="move-stat">{{ ctrl.moves[move].power }}</td>
-                    <td class="move-stat">{{ ctrl.moves[move].accuracy }}</td>
-                  </tr>
-                </table>
-              </div>
-            </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12 text-right">
-            <button class="btn btn-danger" ng-click="ctrl.relacher(pokemon)">Relâcher</button>
+            <button class="btn btn-warning" ng-click="ctrl.edit(pokemon)">Modifier</button>
+            <button class="btn btn-danger" ng-click="ctrl.delete(pokemon)">Supprimer</button>
           </div>
         </div>
       </div>

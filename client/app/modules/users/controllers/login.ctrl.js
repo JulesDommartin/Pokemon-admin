@@ -58,13 +58,15 @@
 
     AppAuth.login({})
     .then(function (user) {
-      if (user !== null) {
+      if (user !== undefined && user !== null && user.role && user.role == "admin") {
         var next = $location.nextAfterLogin || '/';
         $location.nextAfterLogin = null;
         if (next === '/login') {
           next = '/';
         }
         $location.path(next);
+      } else {
+        AppAuth.logout();
       }
     })
     .catch(function(err) {
@@ -162,6 +164,7 @@
               message: err.data.message,
               duration: 2000
             });
+            AppAuth.logout();
           });
       },
       2000);

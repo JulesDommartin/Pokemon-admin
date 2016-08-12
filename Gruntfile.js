@@ -30,7 +30,7 @@ module.exports = function (grunt) {
     includeSource: {
       options: {
         basePath: 'client/app',
-        baseUrl: '/',
+        baseUrl: '/admin/',
         templates: {
           html: {
             js: '<script src="{filePath}"></script>',
@@ -43,7 +43,7 @@ module.exports = function (grunt) {
           '<%= admin.app %>/index.html': '<%= admin.app %>/index.tpl.html'
         },
         options: {
-          baseUrl: '/'
+          baseUrl: '/admin/'
         }
       },
       dist: {

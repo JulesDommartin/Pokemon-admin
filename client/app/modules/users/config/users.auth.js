@@ -16,7 +16,7 @@
                 console.log('401 while on router on login path');
               } else {
                 if ($location.path() !== '/register') {
-                  $location.path('/#/login');
+                  // $location.path('/#/login');
                   console.log("Go to login");  
                 }
                 console.log("Not logged in, redirected to login page");
