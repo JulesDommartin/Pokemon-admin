@@ -9,7 +9,7 @@
 	</div>
 	<div class="col-md-12">
 		<div class="col-md-2">
-			<img ng-if="ctrl.pokemon.sprites.front" ng-src="{{ ctrl.pokemon.sprites.front }}" alt="{{ctrl.pokemon.name}} [Failed]" />
+			<img ng-if="ctrl.pokemon.id" ng-src="../assets/first_generation/{{ ctrl.pokemon.id }}.png" alt="{{ ctrl.pokemon.name }} [Failed]" />
 		</div>
 		<div class="col-md-3">
 			<h4>Stats de base : </h4>
