@@ -1,2 +1,6 @@
 <div>Il y a {{ ctrl.moves.length }} attaques disponibles dans la bdd.
+	<div class="move" ng-repeat="move in ctrl.moves">
+		<span>id : {{move.id}}</span>
+		<span>nom : {{ move.names.fr }}</span>
+	</div>
 </div>

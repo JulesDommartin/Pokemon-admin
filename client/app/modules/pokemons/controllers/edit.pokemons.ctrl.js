@@ -4,10 +4,12 @@
 
 	angular
 		.module('com.module.pokemons')
-		.controller('EditPokemonsCtrl', function (pokemon, moves, PokemonService) {
+		.controller('EditPokemonsCtrl', function (pokemon, moves, PokemonService, $state) {
 
 			this.pokemon = pokemon;
 			this.moves = moves;
+
+			console.log(this.pokemon);
 
 			this.pokemon.moves = pokemon.moves.sort(PokemonService.sortBy('level_learned_at', false, null));
 
@@ -81,6 +83,26 @@
 			}
 
 			this.availableMoves.sort(PokemonService.sortBy('name', false, null));
+
+			this.prevPok = function () {
+				var id;
+				if (this.pokemon.id == 1) {
+					id = 1;
+				} else {
+					id = this.pokemon.id - 1;
+				}
+				$state.go('app.pokemons.edit', {id: id});
+			};
+
+			this.nextPok = function () {
+				var id;
+				if (this.pokemon.id == 151) {
+					id = 151;
+				} else {
+					id = this.pokemon.id + 1;
+				}
+				$state.go('app.pokemons.edit', {id: id});
+			};
 
 
 		});

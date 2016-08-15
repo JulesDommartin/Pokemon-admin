@@ -8,15 +8,20 @@
 
       // $cookies.remove('current_move');
 
-      if ($cookies.get('current_move') === undefined) {
-        this.currentMove = 101;
-      } else {
-        this.currentMove = $cookies.get('current_move');
-      }
+        // this.current_move = 173;
+
+
+      // if ($cookies.get('current_move') === undefined) {
+      //   this.currentMove = 166;
+      // } else {
+      //   this.currentMove = $cookies.get('current_move');
+      // }
 
       this.capitalizeFirstLetter = function (string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
       };
+
+      console.log(moves);
 
       this.moves = moves;
       this.missingMoves = [];
@@ -87,6 +92,7 @@
         MoveService.insert(move)
           .then((data) => {
             console.log(move.name + " inséré dans la base ! ");
+            setTimeout(() => { this.chercherMoveSuivant(obj.id + 1) }, 3000);
           })
           .catch((err) => {
             console.log(err);
@@ -96,6 +102,7 @@
       this.findFromAPI = function (number) {
         MoveService.findFromAPI(number)
           .then((data) => {
+            console.log("on crée");
             this.createMoveFromAPI(data.data);
           })
           .catch((err) => {
@@ -111,8 +118,9 @@
         $cookies.remove('current_move');
         var nextId = parseInt(id) + 1;
         $cookies.put('current_move', nextId);
-        setTimeout(() => { location.reload(); }, 3000);
       };
+
+      // this.chercherMoveSuivant(this.current_move);
 
     });
 
