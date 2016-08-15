@@ -50,6 +50,7 @@
 				PokemonService.update(this.pokemon)
 					.then((res) => {
 						console.log(res);
+						$('#edit-moves').modal('hide');
 					})
 					.catch((err) => {
 						console.log(err);

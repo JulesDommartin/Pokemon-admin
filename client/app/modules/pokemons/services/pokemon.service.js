@@ -182,7 +182,8 @@
           hp_left : stats[5].value,
           ivs : ivs,
           evs : evs,
-          taux_capture : pokemon.taux_capture
+          taux_capture : pokemon.taux_capture,
+          curve_type : pokemon.curve_type
         };
         return newPokemon;
       };
